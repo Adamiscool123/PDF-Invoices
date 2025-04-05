@@ -20,19 +20,29 @@ for filepath in filepaths:
     columns = [item.replace("_", " ").title() for item in columns]
     pdf.set_font(family="Times", size=10, style='B')
     pdf.set_text_color(80, 80, 80)
-    pdf.cell(w=30, h=10, txt=columns[0], border=1)
-    pdf.cell(w=70, h=10, txt=columns[0], border=1)
-    pdf.cell(w=30, h=10, txt=columns[0], border=1)
-    pdf.cell(w=30, h=10, txt=columns[0], border=1)
-    pdf.cell(w=30, h=10, txt=columns[0], border=1, ln=1)
+    pdf.cell(w=32, h=10, txt=columns[0], border=1)
+    pdf.cell(w=65, h=10, txt=columns[1], border=1)
+    pdf.cell(w=32, h=10, txt=columns[2], border=1)
+    pdf.cell(w=32, h=10, txt=columns[3], border=1)
+    pdf.cell(w=32, h=10, txt=columns[4], border=1, ln=1)
 
     for index, row in df.iterrows():
         pdf.set_font(family="Times", size=10)
         pdf.set_text_color(80,80,80)
-        pdf.cell(w=30, h=10, txt=str(row["product_id"]), border=1)
-        pdf.cell(w=70, h=10, txt=str(row["product_name"]), border=1)
-        pdf.cell(w=30, h=10, txt=str(row["amount_purchased"]), border=1)
-        pdf.cell(w=30, h=10, txt=str(row["price_per_unit"]), border=1)
-        pdf.cell(w=30, h=10, txt=str(row["total_price"]), border=1, ln=1)
+        pdf.cell(w=32, h=10, txt=str(row["product_id"]).title(), border=1)
+        pdf.cell(w=65, h=10, txt=str(row["product_name"]).title(), border=1)
+        pdf.cell(w=32, h=10, txt=str(row["amount_purchased"]).title(), border=1)
+        pdf.cell(w=32, h=10, txt=str(row["price_per_unit"]).title(), border=1)
+        pdf.cell(w=32, h=10, txt=str(row["total_price"]).title(), border=1, ln=1)
+
+    pdf.set_font(family="Times", size=10)
+    pdf.set_text_color(80,80,80)
+    pdf.cell(w=32, h=10, border=1)
+    pdf.cell(w=65, h=10, border=1)
+    pdf.cell(w=32, h=10, border=1)
+    pdf.cell(w=32, h=10, border=1)
+    pdf.cell(w=32, h=10, txt=str(row["total_price"]) , border=1, ln=2)
+    #Need to change total price here so it can accually get the total price of all
+
 
     pdf.output(f"PDFS/{filename}.pdf")
