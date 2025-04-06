@@ -52,6 +52,4 @@ for filepath in filepaths:
     pdf.image('pythonhow.png', w=10)
 
 
-
-    # check the meaning of sheet_name
     pdf.output(f"PDFS/{filename}.pdf")
