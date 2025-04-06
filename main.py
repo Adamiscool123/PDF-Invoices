@@ -35,14 +35,23 @@ for filepath in filepaths:
         pdf.cell(w=32, h=10, txt=str(row["price_per_unit"]).title(), border=1)
         pdf.cell(w=32, h=10, txt=str(row["total_price"]).title(), border=1, ln=1)
 
+    total_sum = df["total_price"].sum()
     pdf.set_font(family="Times", size=10)
     pdf.set_text_color(80,80,80)
     pdf.cell(w=32, h=10, border=1)
     pdf.cell(w=65, h=10, border=1)
     pdf.cell(w=32, h=10, border=1)
     pdf.cell(w=32, h=10, border=1)
-    pdf.cell(w=32, h=10, txt=str(row["total_price"]) , border=1, ln=2)
-    #Need to change total price here so it can accually get the total price of all
+    pdf.cell(w=32, h=10, txt=str(total_sum) , border=1, ln=1)
+
+    pdf.set_font(family="Times", size=10, style="B")
+    pdf.cell(w=30, h=8, txt=f'The total due amount is {total_sum} Euros.', ln=1)
+
+    pdf.set_font(family="Times", size=14, style='B')
+    pdf.cell(w=25, h=8, txt="PythonHow")
+    pdf.image('pythonhow.png', w=10)
 
 
+
+    # check the meaning of sheet_name
     pdf.output(f"PDFS/{filename}.pdf")
